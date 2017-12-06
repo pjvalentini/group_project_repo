@@ -10,7 +10,7 @@ if (process.env.DATABASE_URL) {
 	dbUrl = {
 		user: process.argv.POSTGRES_USER,
 		password: process.argv.POSTGRES_PASSWORD,
-		database: 'itunes',
+		database: '<OUR DB NAME GOES HERE>',
 		host: 'localhost',
 		port: 5432,
 	};
