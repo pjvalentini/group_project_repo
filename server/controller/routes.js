@@ -10,7 +10,7 @@ if (process.env.DATABASE_URL) {
 	dbUrl = {
 		user: process.argv.POSTGRES_USER,
 		password: process.argv.POSTGRES_PASSWORD,
-		database: '<OUR DB NAME GOES HERE>',
+		database: 'world_holidays',
 		host: 'localhost',
 		port: 5432,
 	};
@@ -25,6 +25,18 @@ var router = express.Router();
 // first basic route for index.html page.
 router.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/index.html'));
+});
+
+router.get('/api/calendar', (req, res) => {
+	var info = 'SELECT * FROM world_holidays';
+	pgClient.query(info, (error, getInfo) => {
+		console.log(getInfo);
+		if (error) {
+			res.json(error);
+		} else {
+			res.json(getInfo);
+		}
+ 	});
 });
 
 // Other routes to go here!
