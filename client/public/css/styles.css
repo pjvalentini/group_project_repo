@@ -1,3 +1,12 @@
 .appHeader {
   border-bottom: 2px solid black;
+  text-transform: uppercase;
+}
+
+.fc-header-toolbar {
+  text-transform: uppercase;
+}
+
+.fc-day:hover {
+  background-color: #b5b5b5;
 }

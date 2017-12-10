@@ -1,6 +1,10 @@
 /* global $ */
 $(document).ready(function() {
-  $('#calendar').fullCalendar({
-      
-  });
+	$('#calendar').fullCalendar({
+		header: {
+			left: '',
+			center: 'title',
+			right: 'today prev, next',
+		},
+	});
 });
