@@ -18,7 +18,10 @@ $(document).ready(function(){
 			data: JSON.stringify(signUpObj),
 			contentType: 'application/json'
 		}).then(function(res){
-			window.location.href = '../sign-in.html'
+			if(res === "successfully signed up"){
+				window.location.href = '/sign-in'
+			}
+						
 		});
 
 		// $('#name-input').val("");
