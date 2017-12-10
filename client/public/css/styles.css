@@ -1,4 +1,16 @@
-h1 {
-  color: red;
-  font-size: 80px;
+.appHeader {
+  border-bottom: 2px solid black;
+  text-transform: uppercase;
+}
+
+.fc-header-toolbar {
+  text-transform: uppercase;
+}
+
+.fc-right {
+  margin-right: 12px;
+}
+
+.fc-day:hover {
+  background-color: #b5b5b5;
 }
