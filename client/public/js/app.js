@@ -1,2 +1,6 @@
-var greeting = "hello";
-console.log(greeting);
+/* global $ */
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+      
+  });
+});

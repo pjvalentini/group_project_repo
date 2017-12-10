@@ -22,7 +22,7 @@ pgClient.connect();
 var html_creator = require('../helpers/html_creator.js');
 var router = express.Router();
 
-// first basic route for index.html page...there is no html now...but this is a standard line.
+// first basic route for index.html page.
 router.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/index.html'));
 });
