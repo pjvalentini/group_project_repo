@@ -28,15 +28,29 @@ router.get('/', function(req, res) {
 });
 
 router.get('/api/calendar', (req, res) => {
+	// console.log(res);
 	var info = 'SELECT * FROM world_holidays';
 	pgClient.query(info, (error, getInfo) => {
-		console.log(getInfo);
+		// console.log(getInfo);
 		if (error) {
 			res.json(error);
 		} else {
 			res.json(getInfo);
 		}
  	});
+});
+
+router.get('/calendar/holidays', (req, res) => {
+	console.log(res);
+	var calendarHolidays = 'SELECT * FROM world_holidays';
+	pgClient.query(calendarHolidays, (err, getCalendarHolidays) => {
+		console.log(getCalendarHolidays);
+		if (err) {
+			res.json(err);
+		} else {
+			res.json(getCalendarHolidays);
+		}
+	});
 });
 
 // Other routes to go here!
