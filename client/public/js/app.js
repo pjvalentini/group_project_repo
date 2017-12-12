@@ -7,6 +7,22 @@ $(document).ready(function() {
 	}).then((res) => {
 		console.log(res);
 	    $('#calendar').fullCalendar({
+
+	//     events: [
+	// 	    {
+	// 	        title: 'New Years Day',
+	// 	        start: '2018-01-01',
+	// 	        url: '/api/calendar',
+	// 	    },
+  //       // other events here
+  // 	],
+	//     eventClick: function(event) {
+	//         if (res) {
+	//             window.open("/api/calendar"); // modal URL?
+	//             return false;
+	//         }
+	//     },
+	// });
 				schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
 	    	// defaultView: 'agendaDay',
 		    events: res,
@@ -26,7 +42,7 @@ $(document).ready(function() {
 		    eventClick: function(event, element) {
 		    	console.log(event.title); // logs the holiday clicked in the console.
 		        event.title = "CLICKED!";
-		        $('#calendar').fullCalendar('updateEvent', event);
+		        // $('#calendar').fullCalendar('updateEvent', event);
 		    },
 	    });
 

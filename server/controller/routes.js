@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var pg = require('pg');
+var month_convertor = require('./../helpers/month_convertor.js');
 
 var localCon = {
 	user: process.argv.POSTGRES_USER,
@@ -30,21 +31,22 @@ router.get('/calendar', function(req, res) {
 // this route id for the calendar info (Just Dec)
 router.get('/api/calendar', function(req, res) {
 	pgClient.query("SELECT * FROM holidays", (err, results) => {
-		var dec = [];
+		var holidays = [];
 		for (var i = 0; i < results.rows.length; i++) {
 		 // if (results.rows[i].month === "December") {
 			let day = results.rows[i].day.length > 1 ? results.rows[i].day : `0${results.rows[i].day}`;
+			// let month = results.rows[i].month.length > 1 ? results.rows[i].month : `0${results.rows[i].month}`;
 			var data = {};
-			// data.id = results.rows[i].info;
 			data.title = results.rows[i].info;
-			data.start = "2017-12-" + day;
+			data.start = `2018-${month_convertor(results.rows[i].month)}-${day}`;
+			// data.end = "2018-12-31";
 			data.editable = true;
 			data.eventStartEditable = true;
-			dec.push(data);
+			holidays.push(data);
 			console.log(data);
 		 // }
-		}
-		res.json(dec);
+	 }
+		res.json(holidays);
 	});
 });
 
@@ -59,7 +61,7 @@ router.get('/api/calendar', function(req, res) {
 // 				res.json(getInfo);
 // 			}
 // 		});
-
+// });
 
 
 module.exports = router;
