@@ -7,24 +7,7 @@ $(document).ready(function() {
 	}).then((res) => {
 		console.log(res);
 	    $('#calendar').fullCalendar({
-
-	//     events: [
-	// 	    {
-	// 	        title: 'New Years Day',
-	// 	        start: '2018-01-01',
-	// 	        url: '/api/calendar',
-	// 	    },
-  //       // other events here
-  // 	],
-	//     eventClick: function(event) {
-	//         if (res) {
-	//             window.open("/api/calendar"); // modal URL?
-	//             return false;
-	//         }
-	//     },
-	// });
 				schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-	    	// defaultView: 'agendaDay',
 		    events: res,
 		    resources: [
 		        { id: 'a', title: 'Room A' },
@@ -45,8 +28,5 @@ $(document).ready(function() {
 		        // $('#calendar').fullCalendar('updateEvent', event);
 		    },
 	    });
-
-	    // var arr = $('#calendar').fullCalendar('clientEvents');
-	    // console.log(arr);
 	});
 });

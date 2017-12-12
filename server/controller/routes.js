@@ -50,7 +50,12 @@ router.get('/api/calendar', function(req, res) {
 	});
 });
 
+// MIKAEL this is for you....repurpose it as you please, or delete it altogether if you dont need it.
+
+// its getting the data back. from the query (All 60 holidays);
+
 // this route gets in the info for the modal.
+
 // router.get('/api/info', (req, res) => {
 // 	var modalInfo = "SELECT * FROM holidays";
 // 		pgClient.query(modalInfo, (errorTwo, getInfo) => {
