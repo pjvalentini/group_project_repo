@@ -19,11 +19,15 @@ pgClient.connect();
 
 var router = express.Router();
 
-router.get('/', function(req,res){
+router.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/index.html'));
 });
 
-router.get('/api/calendar', function(req,res) {
+router.get('/calendar', function(req, res) {
+	res.sendFile(path.join(__dirname, '../../client/public/html/calendar.html'));
+});
+
+router.get('/api/calendar', function(req, res) {
 	pgClient.query("SELECT * FROM holidays", (err,results) => {
 		var dec = [];
 		for (var i = 0; i < results.rows.length; i++) {
