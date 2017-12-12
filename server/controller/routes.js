@@ -10,7 +10,7 @@ if (process.env.DATABASE_URL) {
 	dbUrl = {
 		user: process.argv.POSTGRES_USER,
 		password: process.argv.POSTGRES_PASSWORD,
-		database: '<OUR DB NAME GOES HERE>',
+		database: 'world_holidays',
 		host: 'localhost',
 		port: 5432,
 	};
@@ -26,7 +26,68 @@ var router = express.Router();
 router.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/index.html'));
 });
+router.get('/sign-up', function(req, res) {
+	res.sendFile(path.join(__dirname, '../../client/public/html/sign-up.html'));
+});
+router.get('/sign-in', function(req, res) {
+	res.sendFile(path.join(__dirname, '../../client/public/html/sign-in.html'));
+});
+//SIGN UP ROUTE
+router.post('/api/sign-up', function(req, res) {
+	var insertQuery = 'INSERT INTO users (lastname, firstname, username, email, password) VALUES ($1,$2,$3,$4,$5)';
+	pgClient.query(insertQuery, [req.body.lastname, req.body.firstname, req.body.username, req.body.email, req.body.password], (err, queryRes) => {
+		if(err){
+			res.json({error: err})
+		} else {
+			res.json("successfully signed up")
+		}
+	})
 
-// Other routes to go here!
+});
+//SIGN IN ROUTE
+router.post('/api/sign-in', function(req, res) {
+	var signInQuery = `SELECT * FROM users WHERE username='${req.body.username}'`;
+	pgClient.query(signInQuery, function(error,queryRes){
+		console.log(req.body)
+		if(req.body.password === queryRes.rows[0].password){
+			console.log(queryRes)
+			if(error){
+				res.json({error:error})
+			} else{
+				console.log("Welcome "+ queryRes.rows[0].firstname)
+				res.json({results: queryRes.rows})
+			}
+		} else {
+			res.json({error: 'Incorrect Password'})
+		};
+	});
+});
+
+router.get('/api/world-holidays/', function(req, res){
+	pgClient.query('SELECT * FROM holidays', function(error, queryRes){
+		if(error){
+			res.json(error)
+		} else {
+			res.json(queryRes)
+		}
+	})
+})
+//AFTER SIGN IN, PROFILE SHOWING WHICH HOLIDAYS WERE FAVORITED
+// router.get('/api/profile/:id', function(req,res){
+// 	var userFavorites = []
+// 	var query = `SELECT holidays.month, holidays.day, holidays.nation INNER JOIN favorited_holidays ON favorited_holidays.holiday_id=holidays.id WHERE favorited_holidays.user_id='${req.params.id}'`;
+// 	pgClient.query(query, function(error, queryRes){
+// 		if(error){
+// 			res.json({error: error})
+// 		} else {
+// 			res.set('Content-Type', 'text/html');
+// 			res.send(html_creator(queryRes.rows[0]));
+// 		};
+// 	});
+// });
+
+//ROUTE SHOWING PROPER MODEL WITH HOLIDAY INFO 
+
+
 
 module.exports = router;
