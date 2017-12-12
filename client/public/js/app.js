@@ -27,15 +27,17 @@ $(document).ready(function(){
 		method: 'GET',
 		url: 'api/world-holidays/'
 	}).then(function(results){
+		console.log(results)
 		var newRow, monthTd, dateTd, nationTd, infoTd, linkTd
 		for(var i = 0; i < results.rows.length; i++){
-			rewRow = $('<tr class="holiday-row" data-holiday-id='+ results.rows[i].id +'>')
-			monthTd = $('<td>');
-			dateTd = $('<td>');
-			nationTd = $('<td>');
-			infoTd = $('<td>');
-			linkTd = $('<td>');
-
+			newRow = $('<tr class="holiday-row" data-holiday-id='+ results.rows[i].id +'>')
+			monthTd = $('<td class="month" data-holiday-id='+results.rows[i].id+'>');
+			dateTd = $('<td class="date" data-holiday-id='+results.rows[i].id+'>');
+			nationTd = $('<td class="nation" data-holiday-id='+results.rows[i].id+'>');
+			infoTd = $('<td class="info" data-holiday-id='+results.rows[i].id+'>');
+			linkTd = $('<td class="link" data-holiday-id='+results.rows[i].id+'>');
+			
+			
 			monthTd.text(results.rows[i].month);
 			dateTd.text(results.rows[i].day);
 			nationTd.text(results.rows[i].nation);
@@ -46,22 +48,22 @@ $(document).ready(function(){
 			$('#everything-div').append(newRow)
 		}
 	})
-	$(document).on('click', '.holiday-row', function(){
-		var holiday = this.data('holiday-id');
-		$('#holiday-modal').modal();
+	// $(document).on('click', '.holiday-row', function(){
+	// 	var holiday = this.data('holiday-id');
+	// 	$('#holiday-modal').modal();
 
-		$.ajax({
-			method: 'GET',
-			url: 'api/world-holidays'
-		}).then(function(info){
-			for( i=0; i< info.rows.length; i++){
-				if(info.rows[i].id===holiday){
-					console.log(info.rows[i].info)
-					console.log(info.rows[i].link)
-				}
-			}
-		})
+	// 	$.ajax({
+	// 		method: 'GET',
+	// 		url: 'api/world-holidays'
+	// 	}).then(function(info){
+	// 		for( i=0; i< info.rows.length; i++){
+	// 			if(info.rows[i].id===holiday){
+	// 				console.log(info.rows[i].info)
+	// 				console.log(info.rows[i].link)
+	// 			}
+	// 		}
+	// 	})
 
-	})
+	// })
 
 });
