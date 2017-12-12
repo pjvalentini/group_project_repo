@@ -31,6 +31,6 @@ $(document).ready(function() {
 	    });
 
 	    // var arr = $('#calendar').fullCalendar('clientEvents');
-	    // console.log(arr)
+	    // console.log(arr);
 	});
 });

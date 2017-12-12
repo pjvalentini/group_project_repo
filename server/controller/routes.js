@@ -27,22 +27,39 @@ router.get('/calendar', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/calendar.html'));
 });
 
+// this route id for the calendar info (Just Dec)
 router.get('/api/calendar', function(req, res) {
-	pgClient.query("SELECT * FROM holidays", (err,results) => {
+	pgClient.query("SELECT * FROM holidays", (err, results) => {
 		var dec = [];
 		for (var i = 0; i < results.rows.length; i++) {
-		 if (results.rows[i].month === "December") {
+		 // if (results.rows[i].month === "December") {
 			let day = results.rows[i].day.length > 1 ? results.rows[i].day : `0${results.rows[i].day}`;
 			var data = {};
+			// data.id = results.rows[i].info;
 			data.title = results.rows[i].info;
 			data.start = "2017-12-" + day;
 			data.editable = true;
 			data.eventStartEditable = true;
 			dec.push(data);
-		 }
+			console.log(data);
+		 // }
 		}
 		res.json(dec);
 	});
 });
+
+// this route gets in the info for the modal.
+// router.get('/api/info', (req, res) => {
+// 	var modalInfo = "SELECT * FROM holidays";
+// 		pgClient.query(modalInfo, (errorTwo, getInfo) => {
+// 			console.log(getInfo);
+// 			if (errorTwo) {
+// 				res.json(errorTwo);
+// 			} else {
+// 				res.json(getInfo);
+// 			}
+// 		});
+
+
 
 module.exports = router;
