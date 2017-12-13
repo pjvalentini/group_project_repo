@@ -40,7 +40,7 @@ router.get('/api/calendar', function(req, res) {
 			data.editable = true;
 			data.eventStartEditable = true;
 			holidays.push(data);
-			console.log(data);
+			// console.log(data);
 	 }
 		res.json(holidays);
 	});
@@ -52,17 +52,17 @@ router.get('/api/calendar', function(req, res) {
 
 // this route gets in the info for the modal.
 
-// router.get('/api/info', (req, res) => {
-// 	var modalInfo = "SELECT * FROM holidays";
-// 		pgClient.query(modalInfo, (errorTwo, getInfo) => {
-// 			console.log(getInfo);
-// 			if (errorTwo) {
-// 				res.json(errorTwo);
-// 			} else {
-// 				res.json(getInfo);
-// 			}
-// 		});
-// });
+router.get('/api/info', (req, res) => {
+	var modalInfo = "SELECT * FROM holidays";
+		pgClient.query(modalInfo, (errorTwo, getInfo) => {
+			// console.log(getInfo);
+			if (errorTwo) {
+				res.json(errorTwo);
+			} else {
+				res.json(getInfo);
+			}
+		});
+});
 
 
 module.exports = router;

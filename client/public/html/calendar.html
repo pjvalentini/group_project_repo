@@ -10,19 +10,23 @@
 <body>
 	<h1 class="appHeader">World Holiday Calendar</h1>
 	<div id="calendar"></div>
-	<div id="main-container" class="modal-container"></div>
-	<div id = "update-quote-modal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content text-center">
-				<div class="modal-header">
-					<h2>Holiday Info</h2>
-				</div>
-				<div class="modal-body"></div>
-				<div class="modal-footer"></div>
-			</div>
-		</div>
-	</div>
+	<div id="fullCalModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4 id="modalMonth" class="modal-month"></h4>
+            </div>
+            <div id="modalTitle" class="modal-title"></div>
+						<div id="modalLink" class="modal-link"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="./public/js/moment.js"></script>
 <script src="./public/js/fullcalendar.js"></script>
 <script src="./public/js/scheduler.js"></script>

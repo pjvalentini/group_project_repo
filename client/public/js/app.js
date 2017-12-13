@@ -22,11 +22,35 @@ $(document).ready(function() {
 		       	console.log(jsEvent); // mouseup event triggered
 		       	console.log($(this));
 		    },
-		    eventClick: function(event, element) {
-		    	console.log(event.title); // logs the holiday clicked in the console.
-		        event.title = "CLICKED!";
-		        // $('#calendar').fullCalendar('updateEvent', event);
-		    },
+				eventClick: function(event, jsEvent, view) {
+						$('.modal-header').html(event.month);
+						$('#modalTitle').html(event.info);
+						$('#modalLink').attr('href', event.link);
+						$('#fullCalModal').modal();
+						console.log(event);
+						console.log(jsEvent);
+						console.log(view);
+				}
 	    });
 	});
 });
+
+// $(document).ready(function() {
+// 	$.ajax({
+// 		method: "GET",
+// 		url: "/api/info",
+// 	}).then(function(getModalInfo) {
+// 		// console.log(getModalInfo);
+// 		$('#bootstrapModalFullCalendar').fullCalendar({
+// 				eventClick:  function(event, jsEvent, view) {
+// 						$('#modalMonth').html(event.month);
+// 						$('#modalTitle').html(event.info);
+// 						$('#modalLink').attr('href', event.link);
+// 						$('#fullCalModal').modal();
+// 						console.log(event);
+// 						console.log(jsEvent);
+// 						console.log(view);
+// 				}
+// 			});
+// 	});
+// });
