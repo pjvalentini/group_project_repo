@@ -107,6 +107,14 @@ router.get('/api/world-holidays', function(req, res){
 
 //ROUTE SHOWING PROPER MODEL WITH HOLIDAY INFO 
 
+router.post('/api/world-holidays', function(req, res){
+	var favoritesQuery = "INSERT INTO favorited_holidays (holiday_id) VALUES ($1)" //can you do a join on user_id with the users table??
+	
+	pgClient.queryRes(favoritesQuery, [req,body.holiday_id], function(error, queryRes){
+
+	})
+	
+});
 
 
 module.exports = router;
