@@ -33,18 +33,14 @@ router.get('/api/calendar', function(req, res) {
 	pgClient.query("SELECT * FROM holidays", (err, results) => {
 		var holidays = [];
 		for (var i = 0; i < results.rows.length; i++) {
-		 // if (results.rows[i].month === "December") {
 			let day = results.rows[i].day.length > 1 ? results.rows[i].day : `0${results.rows[i].day}`;
-			// let month = results.rows[i].month.length > 1 ? results.rows[i].month : `0${results.rows[i].month}`;
 			var data = {};
 			data.title = results.rows[i].info;
 			data.start = `2018-${month_convertor(results.rows[i].month)}-${day}`;
-			// data.end = "2018-12-31";
 			data.editable = true;
 			data.eventStartEditable = true;
 			holidays.push(data);
 			console.log(data);
-		 // }
 	 }
 		res.json(holidays);
 	});

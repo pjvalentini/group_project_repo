@@ -1,3 +1,5 @@
+// This exported function will convert the months to numbers.
+// So the holidays will pouplate the entire 2018 year.
 module.exports = (month) => {
 	switch (month) {
 	case 'January':
