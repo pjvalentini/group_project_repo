@@ -32,6 +32,10 @@ router.get('/sign-up', function(req, res) {
 router.get('/sign-in', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/sign-in.html'));
 });
+
+router.get('/world-holidays', function(req, res) {
+	res.sendFile(path.join(__dirname, '../../client/public/html/world-holidays.html'));
+});
 //SIGN UP ROUTE
 router.post('/api/sign-up', function(req, res) {
 	var insertQuery = 'INSERT INTO users (lastname, firstname, username, email, password) VALUES ($1,$2,$3,$4,$5)';
@@ -58,17 +62,32 @@ router.post('/api/sign-in', function(req, res) {
 				res.json({results: queryRes.rows})
 			}
 		} else {
+			alert("Please type correct password")
 			res.json({error: 'Incorrect Password'})
 		};
 	});
 });
 
-router.get('/api/world-holidays/', function(req, res){
+router.get('/api/world-holidays', function(req, res){
 	pgClient.query('SELECT * FROM holidays', function(error, queryRes){
+		console.log(queryRes)
 		if(error){
 			res.json(error)
 		} else {
-			res.json(queryRes)
+			var arr = [];
+			for(var i = 0; i < queryRes.rows.length; i++){
+				var data = {
+					id: queryRes.rows[i].id,
+					month: queryRes.rows[i].month,
+					day: queryRes.rows[i].day,
+					nation: queryRes.rows[i].nation,
+					info: queryRes.rows[i].info,
+					link: queryRes.rows[i].link
+				};
+				arr.push(data)
+			}
+			console.log()
+			res.json({data: arr})
 		}
 	})
 })
