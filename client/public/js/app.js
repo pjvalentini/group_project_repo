@@ -1,11 +1,8 @@
 /* global $ */
 
-// var moment = require('moment');
-
 $(document).ready(function() {
-
-	function monthConvertor(month){
-	switch (month) {
+	function monthConvertor(month) {
+		switch (month) {
 		case 'January':
 			return "01";
 			break;
@@ -45,7 +42,7 @@ $(document).ready(function() {
 		}
 	}
 
-
+// GET for calendar
 	$.ajax({
 		method: 'GET',
 		url: '/api/calendar',
@@ -68,8 +65,13 @@ $(document).ready(function() {
 		       	console.log($(this));
 		    },
 
+// GET for Modal info from DB
+// Sets and eventCLick on the holiday calendar event.
+
 				eventClick: function(event, jsEvent, view) {
 					var dataDate = $(this).text();
+					console.log(dataDate);
+
 					$('#fullCalModal').modal();
 					$.ajax({
 						method: 'GET',
@@ -85,6 +87,8 @@ $(document).ready(function() {
 									href: dbInfo.rows[i].link,
 									text: `Read More: ${dbInfo.rows[i].link}`,
 								});
+								$(aLink).css("color", "green");
+								$(aLink).css("underline", "none");
 								$('#modalLink').append(aLink);
 							}
 						}
