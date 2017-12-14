@@ -16,7 +16,7 @@ $(document).ready(function(){
 			contentType: 'application/json'
 		}).then(function(res){
 			console.log(res)
-			window.location.href = '/world-holidays'
+			window.location.href = '/world-holidays?id='+res.results[0].id
 		});
 
 		$('#username-input').val("");

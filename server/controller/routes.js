@@ -33,9 +33,9 @@ router.get('/sign-in', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/sign-in.html'));
 });
 
-router.get('/world-holidays', function(req, res) {
-	res.sendFile(path.join(__dirname, '../../client/public/html/world-holidays.html'));
-});
+// router.get('/world-holidays', function(req, res) {
+// 	res.sendFile(path.join(__dirname, '../../client/public/html/world-holidays.html'));
+// });
 //SIGN UP ROUTE
 router.post('/api/sign-up', function(req, res) {
 	var insertQuery = 'INSERT INTO users (lastname, firstname, username, email, password) VALUES ($1,$2,$3,$4,$5)';
@@ -68,9 +68,9 @@ router.post('/api/sign-in', function(req, res) {
 	});
 });
 
-router.get('/api/world-holidays', function(req, res){
+router.get('/world-holidays', function(req, res){
 	pgClient.query('SELECT * FROM holidays', function(error, queryRes){
-		console.log(queryRes)
+	
 		if(error){
 			res.json(error)
 		} else {
@@ -86,8 +86,12 @@ router.get('/api/world-holidays', function(req, res){
 				};
 				arr.push(data)
 			}
-			console.log()
-			res.json({data: arr})
+			//console.log(req.query)
+			//res.json({data: arr, user_id: req.query.id})
+			var all = {data: arr, user_id: req.query.id}
+			//console.log(all)
+			res.set('Content-Type', 'text/html')
+			res.send(html_creator(all))
 		}
 	})
 })
@@ -108,9 +112,8 @@ router.get('/api/world-holidays', function(req, res){
 //ROUTE SHOWING PROPER MODEL WITH HOLIDAY INFO 
 
 router.post('/api/world-holidays', function(req, res){
-	var favoritesQuery = "INSERT INTO favorited_holidays (holiday_id) VALUES ($1)" //can you do a join on user_id with the users table??
-	
-	pgClient.queryRes(favoritesQuery, [req,body.holiday_id], function(error, queryRes){
+	var favoritesQuery = "INSERT INTO favorited_holidays (holiday_id, user_id) VALUES ($1, $2)" //can you do a join on user_id with the users table??
+	pgClient.query(favoritesQuery, [parseInt(req.body.holiday_id), parseInt(req.body.user_id)], function(error, queryRes){
 
 	})
 	
