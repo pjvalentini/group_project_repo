@@ -1,0 +1,141 @@
+ #groundLayer{
+    z-index: 0;
+    position: static;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: static;
+    z-index: 0
+    margin: 0%;
+}
+
+.card {
+    opacity: .90;
+    width: 300px;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    margin-top: 100px;
+    border-radius: 5px;
+    margin-left: -40px;
+}
+.inputtext {
+    width: 110px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+#password_1{
+    width: 220px;
+}
+
+#table_1 {
+    margin-bottom: 20px;
+}
+#firstHR {
+
+    margin-top: 0px;
+}
+.inputtext {
+    margin-bottom: 2px;
+}
+
+#myHr {
+    color: solid black;
+    border-width: 2px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.card-header {
+    margin-top: -5px;
+    font-family: 'opensans-light';
+    font-size: 40px;
+    color: black;
+}
+
+.action {
+    font-family: 'robotocondensed-light';
+    kerning: 5px;
+}
+
+.inputLabels {
+    font-family: 'raleway-light';
+    padding-top: 2px;
+
+
+}
+.fadein img {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    -webkit-animation-name: fade;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 24s;
+    animation-name: fade;
+    animation-duration: 24s;
+}
+
+@-webkit-keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+@keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+
+#f1 {
+    -webkit-animation-delay: -6s;
+    height: auto;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0%;
+    
+
+}
+
+#f3 {
+    -webkit-animation-delay: -12s;
+    height: auto;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0%;
+    
+}
+
+#f4 {
+    -webkit-animation-delay: -18s;
+    height: auto;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0%;
+    
+}
+
+#f2 {
+  
+    height: auto;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0%;
+   
+}
