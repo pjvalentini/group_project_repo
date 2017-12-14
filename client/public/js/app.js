@@ -69,6 +69,7 @@ $(document).ready(function() {
 // Sets and eventCLick on the holiday calendar event.
 
 				eventClick: function(event, jsEvent, view) {
+					$('#link').remove(); // HERE
 					var dataDate = $(this).text();
 					console.log(dataDate);
 
@@ -83,13 +84,14 @@ $(document).ready(function() {
 								$('#modalTitle').html(`${dbInfo.rows[i].month} ${dbInfo.rows[i].day}, 2018`);
 								$('#modalHoliday').html("Holiday: " + dbInfo.rows[i].info);
 								$('#modalNation').html("Nation of Origin: " + dbInfo.rows[i].nation);
-								var aLink = $('<a>',{
+								var aLink = $('<a>', {
 									href: dbInfo.rows[i].link,
 									text: `Read More: ${dbInfo.rows[i].link}`,
+									id: 'link'
 								});
 								$(aLink).css("color", "green");
 								$(aLink).css("underline", "none");
-								$('#modalLink').append(aLink);
+								$('#modalLink').append(aLink);  // HERE
 							}
 						}
 					});
