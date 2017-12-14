@@ -55,7 +55,7 @@ router.get('/api/calendar', function(req, res) {
 router.get('/api/info', (req, res) => {
 	var modalInfo = "SELECT * FROM holidays";
 		pgClient.query(modalInfo, (errorTwo, getInfo) => {
-			// console.log(getInfo);
+			console.log(getInfo); // sends me the data from the db.
 			if (errorTwo) {
 				res.json(errorTwo);
 			} else {
