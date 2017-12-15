@@ -23,19 +23,7 @@ $(document).ready(function() {
 		$('#username-input').val("");
 	});
 
-			var infoId = $(this).data('id');
-
-			$.ajax({
-				method: 'GET', // getting quotes from DB
-				url: '/api/calendar',
-			}).then(function(info) {
-				// console.log(info);
-				for (var i = 0; i < info.rows.length; i++) {
-					if (info.rows[i].id === infoId) {
-						// console.log(infoId);
-					}
-				}
-			});
+		
 
 	function monthConvertor(month) {
 		switch (month) {
@@ -77,6 +65,10 @@ $(document).ready(function() {
 			break;
 		}
 	}
+	// to be linked to enteryModal_1 on index page
+$('#formSignIn').on('submit', function(e) {
+	// to be linked to entryModal_2 on index page
+$('#formSignup').on('submit', function(e) {
 
 // GET for calendar
 	$.ajax({

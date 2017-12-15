@@ -1,17 +1,137 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Group Project</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./public/css/styles.css">
-  </head>
-  <body>
-    <h1>Welcome to World Holiday Calendar!</h1>
-    <h3>What would you like to do?</h3>
-    <a href = "./public/html/sign-up.html" class="btn btn-default">Sign Up</a>
-    <a href = "./public/html/sign-in.html" class="btn btn-info">Sign In</a>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="./public/js/app.js"></script>
-  </body>
+<head>
+	<title>World Holiday Calendar</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/index_nv_2.css">
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web|Josefin+Sans|Noto+Serif|Rubik|Work+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow|Open+Sans|Oswald|Raleway|Roboto+Condensed|Ubuntu" rel="stylesheet">
+</head>
+<body>  
+<div class= "row">
+    <div class= "col-sm-9">
+    </div>
+    <div class= "col-sm-3">
+       <div class="card"> 
+            <h2 class="card-header"> World Holiday Calendar</h2>
+              <hr id="firstHR">
+                <div class="card-body">
+                    <p class="action">Sign In</p>
+                        <form id="signInForm">
+                            <table id="table_1" cellspacing="0">
+                                <tbody>
+                                  <tr>
+                                      <td>
+                                        <label class="inputLabels" for="userName">User Name</label>  
+                                      </td>
+                                      <td>
+                                         <label class="inputLabels"for="passWord">Password</label>   
+                                      </td>
+                                  </tr>  
+                                  <tr>
+                                      <td>
+                                         <input type="username" class="inputtext" name="user" id="username" tabindex="1"> 
+                                      </td>
+                                      <td>
+                                         <input type="password" class="inputtext" name="pass" id="password" tabindex="2">  
+                                      </td>
+                                      <td>
+                                        <input type="submit" name="submit" value=" Sign In">
+                                      </td>
+                                  </tr>
+                                </tbody>   
+                            </table>
+                        </form> 
+                        <div id="entryModal_1" class="modal fade">
+                          <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                                    <h4 id="modalTitle" class="Welcome to World Holiday Calendar"></h4>
+                              </div> 
+                              <p> Please make a selection.</p>
+                             <div class="modal-footer">
+                              <button id="btnCal" type="button" class="btn-default">Go to main calendar</button>
+                              <button id="btnYrCal" type="button" class="btn-default">Go to your calander</button>
+                            </div>
+                          </div>
+                        </div>
+                       <hr id="myHr">
+                       <p class="action">Sign Up</p>
+                        <form id="signUpForm">
+                            <table id="table_2" cellspacing="0">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                        <label class="inputLabels" for="firstname">First Name</label>  
+                                    </td>
+                                    <td>
+                                        <label class="inputLabels" for="lastname">Last Name</label>   
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                        <input type="firstname" class="inputtext" name="first" id="firstname" tabindex="1"> 
+                                    </td>
+                                    <td>
+                                         <input type="lastname" class="inputtext" name="last" id="lastname" tabindex="2">  
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                        <label class="inputLabels" for="username_1">User Name</label>  
+                                    </td>
+                                    <td>
+                                        <label class="inputLabels" for="email">Email</label>   
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                         <input type="username" class="inputtext" name="user_1" id="user_1" tabindex="1"> 
+                                      </td>
+                                      <td>
+                                         <input type="email" class="inputtext" name="email" id="email" tabindex="2">  
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                        <label class="inputLabels" for="password">Password</label>  
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="2">
+                                         <input type="password" class="inputtext" name="password_1" id="password_1" tabindex="1"> 
+                                      </td>
+                                      <td>
+                                         <input type="submit" name="submit" value="Sign Up">  
+                                      </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                       <div id="entryModal_2" class="modal fade">
+                          <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                                    <h4 id="modalTitle" class="Welcome to World Holiday Calendar"></h4>
+                              </div> 
+                              <p> Please make a selection.</p>
+                              <div class="modal-footer">
+                                <button id="btnCal" type="button" class="btn-default">Go to main calendar</button>
+                                <button id="btnYrCal" type="button" class="btn-default">Go to your calander</button>
+                              </div>
+                          </div>
+                        </div>
+                </div>
+        </div>
+    </div>
+ </div>
+<div   class="fadein">
+    <img src="./public/images/img_1.jpg" id="f1">
+    <img src="./public/images/img_2.jpg" id="f2">
+    <img src="./public/images/img_3.jpg" id="f3">
+    <img src="./public/images/img_4.jpg" id="f4">
+</div>
+</body>
 </html>
