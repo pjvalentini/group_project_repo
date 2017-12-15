@@ -92,7 +92,7 @@ $(document).ready(function() {
 // Sets and eventCLick on the holiday calendar event.
 
 				eventClick: function(event, jsEvent, view) {
-					$('#link').remove(); // HERE
+					$('#link').remove();
 					var dataDate = $(this).text();
 					console.log(dataDate);
 
@@ -104,7 +104,7 @@ $(document).ready(function() {
 						for (var i = 0; i < dbInfo.rows.length; i++) {
 							// comapring db info with date info.
 							if (dbInfo.rows[i].info.trim() === dataDate.trim()) {
-								$('#modalTitle').html(`${dbInfo.rows[i].month} ${dbInfo.rows[i].day}, 2018`);
+								$('#modalTitle').html("Date: " + `${dbInfo.rows[i].month} ${dbInfo.rows[i].day}, 2018`);
 								$('#modalHoliday').html("Holiday: " + dbInfo.rows[i].info);
 								$('#modalNation').html("Nation of Origin: " + dbInfo.rows[i].nation);
 								var aLink = $('<a>', {
@@ -112,13 +112,13 @@ $(document).ready(function() {
 									text: `Read More: ${dbInfo.rows[i].link}`,
 									id: 'link'
 								});
-								$(aLink).css("color", "green");
+								$(aLink).css("color", "#337ab7");
 								$(aLink).css("underline", "none");
-								$('#modalLink').append(aLink);  // HERE
+								$('#modalLink').append(aLink);
 							}
 						}
 					});
-			 	}
+			 	},
 	 		});
 	});
 });
