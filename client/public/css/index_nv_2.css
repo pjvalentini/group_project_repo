@@ -12,7 +12,7 @@
 
 .card {
     opacity: .90;
-    width: 300px;
+    width: 305px;
     z-index: 10;
     position: absolute;
     background-color: white;
@@ -20,6 +20,7 @@
     margin-top: 100px;
     border-radius: 5px;
     margin-left: -40px;
+
 }
 .inputtext {
     width: 110px;
@@ -40,6 +41,7 @@
 }
 .inputtext {
     margin-bottom: 2px;
+
 }
 
 #myHr {
