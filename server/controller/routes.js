@@ -20,6 +20,7 @@ var pgClient = new pg.Client(dbUrl);
 pgClient.connect();
 
 var html_creator = require('../helpers/html_creator.js');
+var profile_html_creator = require('../helpers/profile_html_creator.js')
 var router = express.Router();
 
 // first basic route for index.html page...there is no html now...but this is a standard line.
@@ -32,6 +33,10 @@ router.get('/sign-up', function(req, res) {
 router.get('/sign-in', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/sign-in.html'));
 });
+
+router.get('/profile', function(req, res){
+	res.sendFile(path.join(__dirname, '../../client/public/html/profile.html'));
+})
 
 // router.get('/world-holidays', function(req, res) {
 // 	res.sendFile(path.join(__dirname, '../../client/public/html/world-holidays.html'));
@@ -96,18 +101,31 @@ router.get('/world-holidays', function(req, res){
 	})
 })
 //AFTER SIGN IN, PROFILE SHOWING WHICH HOLIDAYS WERE FAVORITED
-// router.get('/api/profile/:id', function(req,res){
-// 	var userFavorites = []
-// 	var query = `SELECT holidays.month, holidays.day, holidays.nation INNER JOIN favorited_holidays ON favorited_holidays.holiday_id=holidays.id WHERE favorited_holidays.user_id='${req.params.id}'`;
-// 	pgClient.query(query, function(error, queryRes){
-// 		if(error){
-// 			res.json({error: error})
-// 		} else {
-// 			res.set('Content-Type', 'text/html');
-// 			res.send(html_creator(queryRes.rows[0]));
-// 		};
-// 	});
-// });
+router.get('/api/profile/:id', function(req,res){
+	var userFavorites = []
+	var query = `SELECT holidays.month, holidays.day, holidays.nation, holidays.info FROM holidays INNER JOIN favorited_holidays ON favorited_holidays.holiday_id=holidays.id WHERE favorited_holidays.user_id='${req.params.id}'`;
+	pgClient.query(query, function(error, queryRes){
+		if (error){
+			res.json({error: error})
+		} else { 
+			//res.json("favorites displayed")
+			for(var i=0; i< queryRes.rows.length; i++){
+				var data = {
+					month: queryRes.rows[i].month,
+					day: queryRes.rows[i].day,
+					nation: queryRes.rows[i].nation,
+					info: queryRes.rows[i].info,
+				}
+				userFavorites.push(data)
+			}
+			var faves = {data: userFavorites, user_id: req.params.id}	
+			res.set('Content-Type', 'text/html')
+			//console.log(faves)
+			//res.json(userFavorites)
+		 	res.send(profile_html_creator(faves))
+		}
+	});
+});
 
 //ROUTE SHOWING PROPER MODEL WITH HOLIDAY INFO 
 
