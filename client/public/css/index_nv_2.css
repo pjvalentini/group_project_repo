@@ -27,6 +27,7 @@
     border: 1px solid lightgrey;
     border-radius: 2px;
     box-sizing: border-box;
+    height: 26px;
 }
 #password_1{
     width: 220px;
@@ -141,3 +142,14 @@
     margin: 0%;
    
 }
+
+#modalTitle {
+   font-family: 'opensans-light'; 
+}
+
+#modalBody {
+    font-family: 'robotocondensed-light'
+}
+
+
+
