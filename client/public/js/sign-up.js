@@ -2,6 +2,7 @@
 $(document).ready(function() {
 	$('#sign-up-form').on('submit', function(e) {
 		e.preventDefault();
+
 		var signUpObj = {
 			lastname: $('#lastname-input').val(),
 			firstname: $('#firstname-input').val(),
@@ -17,9 +18,10 @@ $(document).ready(function() {
 			data: JSON.stringify(signUpObj),
 			contentType: 'application/json',
 		}).then(function(res) {
-			window.location.href = '../sign-in.html';
+			if (res === "successfully signed up") {
+				window.location.href = '/sign-in';
+			}
 		});
-
 		// $('#name-input').val("");
 		// $('#username-input').val("");
 	});

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Sign In Page</title>
-	<link rel="stylesheet" type="text/css" href="./public/styles.css">
+	<link rel="stylesheet" type="text/css" href="./public/css/styles.css">
 </head>
 <body>
 	<h1>Sign in to access your calendar</h1>
@@ -15,8 +15,14 @@
 		<input type="password" id="password-input"/><br>
 		<input type="submit">
 	</form>
-	<a href="/calendar"><button id="calendarButton">Go To Calendar</button></a>
+	<div id="everything-div">
+	<div id = "holiday-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content text-center"></div>
+		</div>
+	</div>
+	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="./public/app.js"></script>
+<script src="./public/js/sign-in.js"></script>
 </body>
 </html>
