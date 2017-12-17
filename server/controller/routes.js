@@ -128,7 +128,7 @@ router.get('/api/profile/:id', function(req, res) {
 			var faves = { data: userFavorites, user_id: req.params.id };
 			res.set('Content-Type', 'text/html');
 			console.log(faves);
-			res.json(userFavorites);
+			// res.json(userFavorites);
 		 	res.send(profile_html_creator(faves));
 		}
 	});

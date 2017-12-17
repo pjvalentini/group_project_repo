@@ -5,7 +5,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		var signInObj = {
 			username: $('#sign-in-username-input').val(),
-			password: $('#sign-in-password-input').val()
+			password: $('#sign-in-password-input').val(),
 		};
 		$.ajax({
 			method: 'POST',

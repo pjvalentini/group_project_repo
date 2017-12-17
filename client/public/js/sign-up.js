@@ -25,4 +25,4 @@ $(document).ready(function() {
 		// $('#name-input').val("");
 		// $('#username-input').val("");
 	});
-});
+})
