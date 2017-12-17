@@ -38,9 +38,6 @@ router.get('/profile', function(req, res){
 	res.sendFile(path.join(__dirname, '../../client/public/html/profile.html'));
 })
 
-// router.get('/world-holidays', function(req, res) {
-// 	res.sendFile(path.join(__dirname, '../../client/public/html/world-holidays.html'));
-// });
 //SIGN UP ROUTE
 router.post('/api/sign-up', function(req, res) {
 	var insertQuery = 'INSERT INTO users (lastname, firstname, username, email, password) VALUES ($1,$2,$3,$4,$5)';

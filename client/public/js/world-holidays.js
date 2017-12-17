@@ -18,8 +18,8 @@ $(document).ready(function(){
 			})
 		})
 		$('#button').on('click', function(){
-
 			window.location.href = '/api/profile/' + $(this).data('user-id');
+			
 				
 		})		
 })		
