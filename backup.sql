@@ -112,7 +112,7 @@ ALTER SEQUENCE holidays_id_seq OWNED BY holidays.id;
 --
 
 CREATE TABLE users (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     lastname character varying(255) NOT NULL,
     firstname character varying(255) NOT NULL,
     username character varying(255) NOT NULL,

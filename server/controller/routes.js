@@ -51,10 +51,12 @@ router.get('/calendar', function(req, res) {
 router.post('/api/sign-up', function(req, res) {
 	var insertQuery = 'INSERT INTO users (lastname, firstname, username, email, password) VALUES ($1,$2,$3,$4,$5)';
 	pgClient.query(insertQuery, [req.body.lastname, req.body.firstname, req.body.username, req.body.email, req.body.password], (err, queryRes) => {
+		// console.log(queryRes);
 		if (err) {
 			res.json({ error: err });
 		} else {
 			res.json("successfully signed up");
+			// console.log(res.json("successfully signed up"));
 		}
 	});
 });
@@ -64,8 +66,9 @@ router.post('/api/sign-in', function(req, res) {
 	console.log(req.body);
 	var signInQuery = `SELECT * FROM users WHERE username='${req.body.username}'`;
 	pgClient.query(signInQuery, function(error, queryRes) {
-		if (req.body.password === queryRes.rows[0].password) { // error.
-			// console.log(queryRes);
+		console.log(signInQuery);
+		if (req.body.password === queryRes.rows[0].password) {
+			console.log(queryRes);
 			if (error) {
 				res.json({ error:error });
 			} else {
@@ -81,6 +84,7 @@ router.post('/api/sign-in', function(req, res) {
 
 // WORLD-HOLIDAYS ROUTE
 router.get('/world-holidays', function(req, res) {
+	console.log(res);
 	pgClient.query('SELECT * FROM holidays', function(error, queryRes) {
 		console.log(queryRes);
 		if (error) {
