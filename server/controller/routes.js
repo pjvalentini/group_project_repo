@@ -38,11 +38,6 @@ router.get('/profile', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/profile.html'));
 });
 
-// do we need this Route ??
-router.get('/world-holidays', function(req, res) {
-	res.sendFile(path.join(__dirname, '../../client/public/html/world-holidays.html'));
-});
-
 router.get('/calendar', function(req, res) {
 	res.sendFile(path.join(__dirname, '../../client/public/html/calendar.html'));
 });
@@ -113,7 +108,7 @@ router.get('/world-holidays', function(req, res) {
 });
 
 // AFTER SIGN IN, PROFILE SHOWING WHICH HOLIDAYS WERE FAVORITED
-router.get('/api/profile/:id', function(req,res) {
+router.get('/api/profile/:id', function(req, res) {
 	var userFavorites = [];
 	var query = `SELECT holidays.month, holidays.day, holidays.nation, holidays.info FROM holidays INNER JOIN favorited_holidays ON favorited_holidays.holiday_id=holidays.id WHERE favorited_holidays.user_id='${req.params.id}'`;
 	pgClient.query(query, function(error, queryRes) {

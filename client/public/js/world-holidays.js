@@ -7,7 +7,7 @@ $(document).ready(function() {
 		// console.log(holiday)
 		$.ajax({
 			method: 'POST',
-			url: '/api/world-holidays',
+			url: 'api/world-holidays',
 			data: { holiday_id: holiday, user_id: $(this).data('user-id') },
 		}).then(function(res) {
 			var userFavorite = [];
