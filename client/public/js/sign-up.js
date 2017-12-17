@@ -1,6 +1,6 @@
-$(document).ready(function(){
-
-	$('#sign-up-form').on('submit', function(e){
+/* global $ */
+$(document).ready(function() {
+	$('#sign-up-form').on('submit', function(e) {
 		e.preventDefault();
 
 		var signUpObj = {
@@ -8,21 +8,21 @@ $(document).ready(function(){
 			firstname: $('#firstname-input').val(),
 			username: $('#username-input').val(),
 			email: $('#email-input').val(),
-			password: $('#password-input').val()
-		}
+			password: $('#password-input').val(),
+		};
 
 		$.ajax({
 			method: 'POST',
 			url: '/api/sign-up',
 			dataType: 'json',
 			data: JSON.stringify(signUpObj),
-			contentType: 'application/json'
-		}).then(function(res){
-			window.location.href = '../sign-in.html'
+			contentType: 'application/json',
+		}).then(function(res) {
+			if (res === "successfully signed up") {
+				window.location.href = '/sign-in';
+			}
 		});
-
 		// $('#name-input').val("");
 		// $('#username-input').val("");
 	});
-
 });

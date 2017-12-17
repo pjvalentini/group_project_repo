@@ -15,14 +15,14 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -112,7 +112,7 @@ ALTER SEQUENCE holidays_id_seq OWNED BY holidays.id;
 --
 
 CREATE TABLE users (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     lastname character varying(255) NOT NULL,
     firstname character varying(255) NOT NULL,
     username character varying(255) NOT NULL,
@@ -299,4 +299,3 @@ ALTER TABLE ONLY users
 --
 -- PostgreSQL database dump complete
 --
-
